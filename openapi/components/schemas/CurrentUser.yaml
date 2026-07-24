@@ -30,6 +30,11 @@ properties:
     $ref: ./AgeVerified.yaml
   allowAvatarCopying:
     type: boolean
+  appleDetails:
+    type: object
+    properties: {}
+  appleId:
+    type: string
   authToken:
     type: string
     description: The auth token for NEWLY REGISTERED ACCOUNTS ONLY (/auth/register)
@@ -38,6 +43,12 @@ properties:
     description: " "
     items:
       $ref: ./Badge.yaml
+  bannerColor:
+    type: string
+    example: c9c92c
+  bannerType:
+    type: string
+    example: color
   bio:
     type: string
   bioLinks:
@@ -45,6 +56,11 @@ properties:
     description: " "
     items:
       type: string
+  completedTutorials:
+    type: array
+    items:
+      type: string
+      example: "standalonewindows:steam:v1"
   contentFilters:
     type: array
     description: These tags begin with `content_` and control content gating
@@ -62,6 +78,7 @@ properties:
     $ref: ./CurrentAvatarThumbnailImageUrl.yaml
   date_joined:
     type: string
+    example: 2023-04-11
     format: date
   developerType:
     $ref: ./DeveloperType.yaml
@@ -108,6 +125,12 @@ properties:
     type: boolean
   homeLocation:
     $ref: ./WorldID.yaml
+  iconFrame:
+    type: string
+  iconUrl:
+    type: string
+    example: "https://api.vrchat.cloud/api/1/image/file_0e8c4e32-7444-44ea-ade4-313c010d4bae/1/256"
+    format: uri
   id:
     $ref: ./UserID.yaml
   isAdult:
@@ -115,9 +138,13 @@ properties:
   isBoopingEnabled:
     type: boolean
     default: true
+  isEconomyCreator:
+    type: boolean
   isFriend:
     type: boolean
     default: false
+  isTemporary:
+    type: boolean
   last_activity:
     type: string
     format: date-time
@@ -130,6 +157,8 @@ properties:
     format: date-time
   last_platform:
     $ref: ./Platform.yaml
+  nameplateEffect:
+    type: string
   obfuscatedEmail:
     type: string
   obfuscatedPendingEmail:
@@ -201,6 +230,10 @@ properties:
     type: array
     items:
       $ref: ./Tag.yaml
+  temporaryExpiryDate:
+    type: string
+    nullable: true
+    format: date
   twoFactorAuthEnabled:
     type: boolean
   twoFactorAuthEnabledDate:
@@ -220,6 +253,7 @@ properties:
   userLanguageCode:
     type: string
     nullable: true
+    example: en
   username:
     deprecated: true
     type: string
@@ -230,42 +264,70 @@ properties:
   viveId:
     type: string
 required:
+  - acceptedPrivacyVersion
   - acceptedTOSVersion
+  - activeFriends
   - ageVerificationStatus
   - ageVerified
   - allowAvatarCopying
+  - appleDetails
+  - appleId
+  - badges
+  - bannerColor
+  - bannerType
   - bio
   - bioLinks
+  - completedTutorials
   - currentAvatar
   - currentAvatarImageUrl
   - currentAvatarTags
   - currentAvatarThumbnailImageUrl
   - date_joined
   - developerType
+  - discordDetails
+  - discordId
   - displayName
   - emailVerified
+  - fallbackAvatar
   - friendGroupNames
   - friendKey
   - friends
+  - googleDetails
+  - googleId
   - hasBirthday
   - hasEmail
   - hasLoggedInFromClient
   - hasPendingEmail
+  - hideContentFilterSettings
   - homeLocation
+  - iconFrame
+  - iconUrl
   - id
   - isAdult
+  - isBoopingEnabled
+  - isEconomyCreator
   - isFriend
+  - isTemporary
+  - last_activity
   - last_login
   - last_mobile
   - last_platform
+  - nameplateEffect
   - obfuscatedEmail
   - obfuscatedPendingEmail
   - oculusId
+  - offlineFriends
+  - onlineFriends
   - pastDisplayNames
+  - picoId
+  - platform_history
+  - presence
+  - profileEffect
   - profilePicOverride
   - profilePicOverrideThumbnail
   - pronouns
   - pronounsHistory
+  - receiveMobileInvitations
   - state
   - status
   - statusDescription
@@ -275,6 +337,11 @@ required:
   - steamId
   - tags
   - twoFactorAuthEnabled
+  - twoFactorAuthEnabledDate
   - unsubscribe
+  - updated_at
   - userIcon
+  - userLanguageCode
+  - username
   - usesGeneratedPassword
+  - viveId
